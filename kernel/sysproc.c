@@ -108,3 +108,10 @@ sys_sysinfo(void)
         return -1;
     return 0;
 }
+
+uint64
+sys_trace(void)
+{
+  argint(0, &myproc()->tracemask);
+  return 0;
+}

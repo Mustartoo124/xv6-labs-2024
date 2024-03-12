@@ -190,8 +190,7 @@ UPROGS=\
 	$U/_wc\
 	$U/_zombie\
 	$U/_sysinfotest\
-
-
+	$U/_trace\
 
 ifeq ($(LAB),$(filter $(LAB), lock))
 UPROGS += \

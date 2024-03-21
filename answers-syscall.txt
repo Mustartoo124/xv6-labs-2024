@@ -1,0 +1,20 @@
+1. Looking at the backtrace output, which function called syscall?
+syscall was call by usertrap() in kernel/trap.c, line 67
+
+2. What is the value of p->trapframe->a7 and what does that value represent? (Hint: look user/initcode.S, the first user program xv6 starts.)
+The value of p->trapframe->a7 is 7
+That number represents for SYS_exec system call
+
+3. What was the previous mode that the CPU was in?
+user mode, as the SPP bit is 0
+
+4. Write down the assembly instruction the kernel is panicing at. Which register corresponds to the variable num?
+800020fe:	00002903          	lw	s2,0(zero) # 0 <_entry-0x80000000>
+Register s2 corresponds to the variable num
+
+5. Why does the kernel crash? Hint: look at figure 3-3 in the text; is address 0 mapped in the kernel address space? Is that confirmed by the value in scause above? (See description of scause in RISC-V privileged instructions)
+The kernel crash due to the fault in loading page, in the xv6, address 0 is not mapped in the kernel address space, as the loader loads the xv6 kernel into memory at physical address 0x80000000. 
+
+6. What is the name of the binary that was running when the kernel paniced? What is its process id (pid)?
+Name of the running binary is 'initcode'
+pid = 1

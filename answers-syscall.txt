@@ -9,7 +9,7 @@ That number represents for SYS_exec system call
 user mode, as the SPP bit is 0
 
 4. Write down the assembly instruction the kernel is panicing at. Which register corresponds to the variable num?
-800020fe:	00002903          	lw	s2,0(zero) # 0 <_entry-0x80000000>
+lw	s2,0(zero)
 Register s2 corresponds to the variable num
 
 5. Why does the kernel crash? Hint: look at figure 3-3 in the text; is address 0 mapped in the kernel address space? Is that confirmed by the value in scause above? (See description of scause in RISC-V privileged instructions)

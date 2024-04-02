@@ -30,8 +30,7 @@ OBJS = \
   $K/sysfile.o \
   $K/kernelvec.o \
   $K/plic.o \
-  $K/virtio_disk.o \
-  $K/sysinfo.o \
+  $K/virtio_disk.o
 
 OBJS_KCSAN = \
   $K/start.o \
@@ -189,8 +188,9 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-	$U/_sysinfotest\
-	$U/_trace\
+
+
+
 
 ifeq ($(LAB),$(filter $(LAB), lock))
 UPROGS += \

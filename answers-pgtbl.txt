@@ -1,0 +1,17 @@
+1. Which other xv6 system call(s) could be made faster using this shared page? Explain how.
+
+- Any system call that invokes the copyout() function could be made faster, 
+as it saves time on copying data. 
+- The system calls for information retrieval, like getpid(), will also be faster, 
+as trapping from usermode is no longer necessary, data can be read in usermode instead.
+
+------------------------------------------------------------------------------------------------------------
+2.Explain the output of vmprint in terms of Fig 3-4 from the text. 
+What does page 0 contain? What is in page 2? 
+When running in user mode, could the process read/write the memory mapped by page 1? 
+What does the third to last page contain?
+
+- Page 0 maps the ‘load program into memory’, so it contains the data and the text section for the process.
+- Page 2 contains the process’s stack. 
+- User mode can’t read/write the memory mapped by page 1 because it contains the guard page.
+- The third to last page contains the heap, trapframe, trampoline.

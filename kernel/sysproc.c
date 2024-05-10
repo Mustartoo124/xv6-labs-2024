@@ -104,7 +104,6 @@ uint64
 sys_kill(void)
 {
   int pid;
-
   argint(0, &pid);
   return kill(pid);
 }

@@ -10,7 +10,10 @@ main(int argc, char *argv[])
 
   pipe(p);
 
+  // size of ping or pong is 4 bytes so read, write 4 bytes
+  // parent send ping to child process first
   if(fork() == 0){
+      // child process
     read(p[0], recv_buf, 4);
     close(p[0]);
 
@@ -21,6 +24,7 @@ main(int argc, char *argv[])
 
     exit(0);
   } else{
+      // parent process
     write(p[1], "ping", 4);
     close(p[1]);
 

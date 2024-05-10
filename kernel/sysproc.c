@@ -91,3 +91,27 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_sysinfo(void)
+{
+    uint64 s;     // address of struct sysinfo
+    uint64 res[2];
+
+    argaddr(0, &s);
+
+    res[0] = freemem();
+    res[1] = nproc();
+
+    struct proc *p = myproc();
+    if (copyout(p->pagetable, s, (char *)res, sizeof(res)) < 0)
+        return -1;
+    return 0;
+}
+
+uint64
+sys_trace(void)
+{
+  argint(0, &myproc()->tracemask);
+  return 0;
+}

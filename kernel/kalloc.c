@@ -82,11 +82,13 @@ kalloc(void)
 }
 
 // Get the number of bytes of free memory
+
 int
 freemem(void)
 {
     int n = 0;
     struct run *r;
+    // ensure exclusive access to the kernel memory
     acquire(&kmem.lock);
 
     for (r = kmem.freelist; r; r = r->next)
